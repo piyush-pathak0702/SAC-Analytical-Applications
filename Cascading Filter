@@ -1,0 +1,39 @@
+// On Page Initialization
+var resultSet = Chart_1.getDataSource().getResultSet(); 
+//If the dimentions to be used in Dropdowns are available in selected Chart or Table. 
+//getMembers("Dimention name"), if not available in Chart/Table.
+for (var i=0; i<resultSet.length; i++)
+	{
+		DD_Location.addItem(resultSet[i]["Location_4nm2e04531"].id, resultSet[i]["Location_4nm2e04531"].description);
+		DD_Store.addItem(resultSet[i]["Store_3z2g5g06m4"].id, resultSet[i]["Store_3z2g5g06m4"].description);
+	}
+
+
+//onSelect Dropdown1
+Chart_1.getDataSource().removeDimensionFilter("Location_4nm2e04531");     //Remove existing Dimention filters from Table/Chart
+Chart_1.getDataSource().removeDimensionFilter("Store_3z2g5g06m4");    //Remove existing Dimention filters from Table/Chart
+var resultSet = Chart_1.getDataSource().getResultSet();
+var selectedLocation = DD_Location.getSelectedKey();
+DD_Store.removeAllItems();   //Removing components of Dropswon 2 from previous selections
+for (var i=0; i<resultSet.length; i++)
+	{
+		if (resultSet[i]["Location_4nm2e04531"].id === selectedLocation)
+			{
+				DD_Store.addItem(resultSet[i]["Store_3z2g5g06m4"].id, resultSet[i]["Store_3z2g5g06m4"].description);    //Adding subsequest components in Dropdown 2, based on DD1 selection
+			}
+	}
+Chart_1.getDataSource().setDimensionFilter("Location_4nm2e04531",selectedLocation);   //Applying dropdown 1 filter on Table/Chart
+
+
+//onSelect Dropdown2
+Chart_1.getDataSource().setDimensionFilter("Store_3z2g5g06m4",DD_Store.getSelectedKey());    //Applying drop;down 2 filter on Table/Chart
+
+
+//Clear filters from Table/Chart and selections on exisitng dropdowns in View mode
+Chart_1.getDataSource().removeDimensionFilter("Location_4nm2e04531");
+Chart_1.getDataSource().removeDimensionFilter("Store_3z2g5g06m4");
+DD_Location.setSelectedKey("");
+DD_Store.setSelectedKey("");
+
+
+
