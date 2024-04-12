@@ -1,0 +1,13 @@
+//Add a button on Canvas page to open pop-up window
+Popup_1.open();
+
+//On pop-up window add Slider and 2 buttons (OK and Cancel)
+
+//OK button on pop-up window
+Table_1.getDataSource().setDimensionFilter("Product_3e315003an",Dropdown_1.getSelectedKey());
+percChange = Slider_1.getValue();
+Popup_1.close();
+
+//CANCEL Button on pop-up window
+Popup_1.close();
+
