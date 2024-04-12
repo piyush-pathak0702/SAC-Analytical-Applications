@@ -1,0 +1,19 @@
+// Add a switch or table/chart images for a switch between Table and Chart
+
+if(Switch_1.isOn())
+	{
+		Chart_3.setVisible(true);
+		Table_3.setVisible(false);
+
+		Chart_Display.setVisible(false);
+		Table_Display.setVisible(true);
+	}else
+		{
+			Chart_3.setVisible(false);
+			Table_3.setVisible(true);
+
+			Chart_Display.setVisible(true);
+			Table_Display.setVisible(false);
+		}
+
+//In design mode, set chart visibility and hide for table
