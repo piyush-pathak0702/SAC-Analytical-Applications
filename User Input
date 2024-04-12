@@ -5,7 +5,7 @@ Popup_1.open();
 
 //OK button on pop-up window
 Table_1.getDataSource().setDimensionFilter("Product_3e315003an",Dropdown_1.getSelectedKey());
-percChange = Slider_1.getValue();
+percChange = Slider_1.getValue();   //percChange is a global variable and used in calculation for commiting changes
 Popup_1.close();
 
 //CANCEL Button on pop-up window
