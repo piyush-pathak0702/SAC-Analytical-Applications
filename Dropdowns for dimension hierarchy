@@ -1,0 +1,81 @@
+//onPage Initialization
+
+Table_4.getDataSource().setHierarchyLevel("Product_3e315003an",1);
+var m= Table_4.getDataSource().getResultSet();
+
+for (var i=0; i<m.length; i++)
+	{
+		var id= m[i]["Product_3e315003an"].id;
+		var description = m[i]["Product_3e315003an"].description;
+		Dropdown_2.addItem(id,description);
+		Dropdown_2.addItem("all", "ALL");
+	}
+Dropdown_2.setSelectedKey("all");
+
+Table_4.getDataSource().setHierarchyLevel("Product_3e315003an",2);
+var n= Table_4.getDataSource().getResultSet();
+
+for (var j=0; j<n.length; j++)
+	{
+		var id2= n[j]["Product_3e315003an"].id;
+		var description2 = n[j]["Product_3e315003an"].description;
+//		var parentid = n[j]["Location_4nm2e04531"].parentId;
+//		if(parentid)
+//			{
+				Dropdown_3.addItem(id2,description2);
+				Dropdown_3.addItem("all", "ALL");
+//			}
+	}
+Dropdown_3.setSelectedKey("all");
+
+
+
+//Dropdown1 
+var PL1= Dropdown_2.getSelectedKey();
+
+if(PL1 === "all")
+	{
+		Table_4.getDataSource().removeDimensionFilter("Product_3e315003an");
+	}else
+		{
+			Table_4.getDataSource().removeDimensionFilter("Product_3e315003an");
+			Table_4.getDataSource().setDimensionFilter("Product_3e315003an",PL1);
+			Table_4.getDataSource().setHierarchyLevel("Product_3e315003an",2);
+		}
+
+var resultSet= Table_4.getDataSource().getResultSet();
+Dropdown_3.removeAllItems();
+
+for (var i=0; i<resultSet.length; i++)
+	{
+		var id2= resultSet[i]["Product_3e315003an"].id;
+		var description2= resultSet[i]["Product_3e315003an"].description;
+//		parentid = resultSet[i]["Location_4nm2e04531"].parentId;
+		
+//		if(parentid)
+//			{
+				Dropdown_3.addItem(id2,description2);
+				Dropdown_3.addItem("all","ALL");
+//			}
+	}
+
+
+//Dropdown2
+var pl2= Dropdown_3.getSelectedKey();
+var pl1= Dropdown_2.getSelectedKey();
+
+if (pl2 === "all")
+	{
+		if(pl1 === "all")
+			{
+				Table_4.getDataSource().removeDimensionFilter("Product_3e315003an");
+			}else
+				{
+					Table_4.getDataSource().removeDimensionFilter("Product_3e315003an");
+					Table_4.getDataSource().setDimensionFilter("Product_3e315003an",pl1);
+				}
+	}else
+		{
+			Table_4.getDataSource().removeDimensionFilter("Product_3e315003an");
+			Table_4.getDataSource().setDimensionFilter("Product_3e315003an",pl2);
+		}
