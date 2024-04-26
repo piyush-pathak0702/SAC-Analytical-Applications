@@ -1,0 +1,15 @@
+// Use the output of a table in Text 
+
+
+//On pageInitialization
+var resultSet = Table_4.getDataSource().getResultSet();
+var length = resultSet.length;
+
+var sum=0;
+for (var i=0; i<resultSet.length; i++)
+	{
+		var data= resultSet[i][Alias.MeasureDimension].rawValue;
+		sum = sum + ConvertUtils.stringToInteger(data);
+	}
+
+SUM = sum; //SUM is a script variable to store the final output
