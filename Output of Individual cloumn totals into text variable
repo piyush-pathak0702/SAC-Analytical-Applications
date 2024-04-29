@@ -1,0 +1,25 @@
+//Output of individual total of column of a table to text variable
+
+
+//prerequisite: Add client calculation Totals/add row and manually calculate the total using the excel sum function i.e Sum(A1:Ax)
+
+//Get the result set
+var resultSet = Table_1.getDataSource().getResultSet();
+
+//Find the length of the result set.
+var len = resultSet.length;
+console.log(resultSet);
+
+//Capture the individual Total Values in respective variables.
+var total1 = resultSet[len-3][Alias.MeasureDimension].rawValue;
+var total2 = resultSet[len-2][Alias.MeasureDimension].rawValue;
+var total3 = resultSet[len-1][Alias.MeasureDimension].rawValue;
+
+//Assign the totals to respective text variables.
+
+Tot_Down1 = ConvertUtils.stringToNumber(total1);
+Tot_Down2 = ConvertUtils.stringToNumber(total2);
+Tot_Down3 = ConvertUtils.stringToNumber(total3);
+console.log(total1);
+console.log(total2);
+console.log(total3);
